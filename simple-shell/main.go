@@ -12,7 +12,15 @@ func main() {
 	reader := bufio.NewReader(os.Stdin)
 
 	for {
-		fmt.Print("> ")
+		cwd, err := getWorkingDir()
+
+		if err == nil {
+			fmt.Print(cwd + "> ")
+		} else {
+			fmt.Println("Error while reading cwd")
+			fmt.Print("> ")
+		}
+
 		input, err := reader.ReadString('\n')
 
 		if err != nil {
@@ -25,6 +33,23 @@ func main() {
 			continue
 		}
 	}
+}
+
+func getWorkingDir() (string, error) {
+	cwd, err := os.Getwd()
+
+	if err != nil {
+		fmt.Println("Error while reading cwd", err)
+		return "", err
+	}
+
+	path := strings.Split(cwd, "/")
+
+	if len(path) > 4 {
+		return "~/" + strings.Join(path[len(path)-3:], "/"), nil
+	}
+
+	return cwd, nil
 }
 
 func execCommand(input string) error {
