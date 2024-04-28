@@ -1,0 +1,8 @@
+package fields
+
+templ Question() {
+    <div class="flex gap-2">
+        <input name="question" class="w-full"></input>
+        <button type="button" class="border rounded-sm border-red-500 border-opacity-50 px-3" hx-on:click="this.parentElement.remove()">X</button>
+    </div>
+}

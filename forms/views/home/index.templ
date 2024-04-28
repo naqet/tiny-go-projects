@@ -1,0 +1,22 @@
+package home;
+
+import "naqet/forms/views/layout"
+import "naqet/forms/views/fields"
+
+templ Index() {
+@layout.Base() {
+<main>
+    <form hx-post="forms" class="grid gap-4 max-w-screen-sm mx-auto" enctype="multipart/form-data" hx-swap="none">
+        <label class="grid">
+            Title
+            <input id="title" name="title" required />
+        </label>
+        Questions:
+        @fields.Question()
+        <button type="button" hx-get="forms/add-field" hx-target="this" hx-swap="beforebegin"
+            class="border border-white rounded-sm bg-opacity-40 bg-green-500">Add field</button>
+        <button type="submit" class="border border-white rounded-sm">Submit</button>
+    </form>
+</main>
+}
+}
