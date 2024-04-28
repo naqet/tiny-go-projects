@@ -1,0 +1,13 @@
+{
+  "name": "forms",
+  "version": "1.0.0",
+  "description": "",
+  "author": "naqet",
+  "license": "MIT",
+  "dependencies": {
+    "tailwindcss": "^3.4.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.7"
+  }
+}
